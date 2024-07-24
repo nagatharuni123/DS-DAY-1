@@ -1,0 +1,313 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.22621}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs28\lang9                                                               DATA STRUCTURE \par
+DATE:24/07/24\par
+\b 1) write a C program to implement following operations\par
+a)traverse:\par
+PROGRAM:\par
+\b0 #include<stdio.h>\par
+int main() \{\par
+    int array[] = \{1, 2, 3, 4, 5\};\par
+  int size = sizeof(array) / sizeof(array[0]); \par
+    printf("Elements of the array: ");\par
+for (int i = 0; i < size; ++i) \{\par
+        printf("%d ", array[i]);\par
+\}\par
+    printf("\\n");\par
+    return 0;\par
+\}\par
+\b OUTPUT:\par
+\b0 Elements of the array: 1 2 3 4 5 \par
+\b b)search\par
+\b0 PROGRAM:\par
+#include <stdio.h>\par
+int linearSearch(int arr[], int size, int key) \{\par
+for (int i = 0; i < size; ++i) \{\par
+        if (arr[i] == key) \{\par
+ return i; \par
+        \}\par
+ \}\par
+    return -1;\par
+\}\par
+int main() \{\par
+int array[] = \{10, 20, 30, 40, 50\};\par
+    int size = sizeof(array) / sizeof(array[0]);\par
+ int key = 30;\par
+    int index = linearSearch(array, size, key);\par
+if (index != -1) \{\par
+        printf("Element %d found at index %d\\n", key, index);\par
+\} else \{\par
+        printf("Element %d not found in the array\\n", key);\par
+\}\par
+return 0;\par
+\}\par
+\b OUTPUT:\par
+\b0 Element 30 found at index 2\par
+\b C)delete:\par
+PROGRAM:\b0\par
+#include <stdio.h>\par
+#define MAX_SIZE 100 \par
+int deleteElement(int arr[], int size, int index) \{\par
+    if (index < 0 || index >= size) \{\par
+        printf("Invalid index to delete\\n");\par
+        return size; \par
+    \}\par
+    for (int i = index; i < size - 1; ++i) \{\par
+        arr[i] = arr[i + 1];\par
+    \}\par
+ return size - 1; \par
+\}\par
+int main() \{\par
+    int array[MAX_SIZE] = \{10, 20, 30, 40, 50\};\par
+    int size = 5; \par
+    int index = 2; \par
+printf("Array before deletion:\\n");\par
+    for (int i = 0; i < size; ++i) \{\par
+        printf("%d ", array[i]);\par
+    \}\par
+    printf("\\n");\par
+    size = deleteElement(array, size, index);\par
+ printf("Array after deletion:\\n");\par
+    for (int i = 0; i < size; ++i) \{\par
+        printf("%d ", array[i]);\par
+    \}\par
+    printf("\\n");\par
+return 0;\par
+\}\par
+\b OUTPUT:\b0\par
+Array before deletion:\par
+10 20 30 40 50 \par
+Array after deletion:\par
+10 20 40 50 \par
+\b d)update:\par
+PROGRAM:\par
+\b0 #include <stdio.h>\par
+#define MAX_SIZE 100 \par
+void updateElement(int arr[], int size, int index, int newValue) \{\par
+    if (index < 0 || index >= size) \{\par
+        printf("Invalid index to update\\n");\par
+        return;\par
+    \}\par
+arr[index] = newValue; \par
+\}\par
+int main() \{\par
+    int array[MAX_SIZE] = \{10, 20, 30, 40, 50\};\par
+    int size = 5; \par
+    int index = 2; \par
+    int newValue = 35; \par
+    printf("Array before update:\\n");\par
+    for (int i = 0; i < size; ++i) \{\par
+        printf("%d ", array[i]);\par
+    \}\par
+    printf("\\n");\par
+updateElement(array, size, index, newValue);\par
+ printf("Array after update:\\n");\par
+    for (int i = 0; i < size; ++i) \{\par
+        printf("%d ", array[i]);\par
+    \}\par
+    printf("\\n");\par
+return 0;\par
+\}\par
+\b OUTPUT:\par
+\b0 Array before update:\par
+10 20 30 40 50\par
+Array after update: \par
+10 20 35 40 50 \par
+\b 2)Writing a recursive function to calculate the factorial of a number.\par
+PROGRAM:\par
+\b0 #include <stdio.h>\par
+unsigned long long factorial(int n) \{\par
+    if (n == 0 || n == 1) \{\par
+        return 1;\par
+    \} else \{\par
+        return n * factorial(n - 1);\par
+    \}\par
+\}\par
+int main() \{\par
+    int number;\par
+    printf("Enter a non-negative integer: ");\par
+    scanf("%d", &number);\par
+    if (number < 0) \{\par
+        printf("Factorial is not defined for negative numbers.\\n");\par
+    \} else \{\par
+        unsigned long long result = factorial(number);\par
+        printf("Factorial of %d is: %llu\\n", number, result);\par
+    \}\par
+return 0;\par
+\}\par
+\b OUTPUT:\par
+\b0 Factorial of 5 is: 120\par
+\b 3)write a C program to find duplicate element in an array\par
+PROGRAM:\par
+\b0 #include <stdio.h>\par
+#define MAX_SIZE 100 \par
+int main() \{\par
+    int array[MAX_SIZE];\par
+    int size, i, j;\par
+        printf("Enter size of the array: ");\par
+    scanf("%d", &size);\par
+    \par
+    // Input elements of the array\par
+    printf("Enter elements in the array:\\n");\par
+    for (i = 0; i < size; i++) \{\par
+        scanf("%d", &array[i]);\par
+    \}\par
+     printf("Duplicate elements in the array are: ");\par
+    for (i = 0; i < size; i++) \{\par
+        for (j = i + 1; j < size; j++) \{\par
+            if (array[i] == array[j]) \{\par
+                printf("%d ", array[i]);\par
+                break;\par
+            \}\par
+        \}\par
+    \}\par
+    printf("\\n");\par
+ return 0;\par
+\}\par
+\b OUTPUT:\par
+\b0 Enter size of the array: 4\par
+Enter elements in the array:\par
+2 3 4 2\par
+Duplicate elements in the array are: 2 \par
+\b 4)write a C program to find Max and Min from an array elements\par
+PROGRAM:\par
+\b0 #include <stdio.h>\par
+#define MAX_SIZE 100 \par
+int main() \{\par
+    int array[MAX_SIZE];\par
+    int size, i;\par
+    int max, min;\par
+        printf("Enter size of the array: ");\par
+    scanf("%d", &size);\par
+        printf("Enter elements in the array:\\n");\par
+    for (i = 0; i < size; i++) \{\par
+        scanf("%d", &array[i]);\par
+    \}\par
+       max = min = array[0];\par
+        for (i = 1; i < size; i++) \{\par
+        if (array[i] > max) \{\par
+            max = array[i];\par
+        \}\par
+        if (array[i] < min) \{\par
+            min = array[i];\par
+        \}\par
+    \}\par
+    printf("Maximum element in the array is: %d\\n", max);\par
+    printf("Minimum element in the array is: %d\\n", min);\par
+return 0;\par
+\}\b\par
+OUTPUT:\par
+\b0 Enter size of the array: 4\par
+Enter elements in the array:4 2 3 1\par
+Maximum element in the array is:4\par
+Minimum element in the array is: 1\par
+\b 5)Given a number n.the task is to print the Fibonacci series and the sum of the series using recursion \par
+input:n=10\par
+output:Fibonacci series\par
+0,1,1,2,3,5,8,13,21,34\par
+sum:88\par
+PROGRAM:\par
+\b0 #include <stdio.h>\par
+int fibonacci(int n) \{\par
+    if (n <= 1)\par
+        return n;\par
+    return fibonacci(n - 1) + fibonacci(n - 2);\par
+\}\par
+int main() \{\par
+    int n = 10;\par
+    int sum = 0;\par
+printf("Fibonacci Series:\\n");\par
+    for (int i = 0; i < n; i++) \{\par
+        printf("%d, ", fibonacci(i));\par
+        sum += fibonacci(i);\par
+    \}\par
+printf("\\nSum: %d\\n", sum);\par
+return 0;\par
+\}\par
+\b OUTPUT:\par
+\b0 Fibonacci Series:\par
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, \par
+sum:88\par
+\b 6)You are given an array arr in increasing order.Find the element x from arr using binary search.\par
+Example 1:arr=\{1,5,6,7,9,10\},x=6\par
+output:Element found at location 2\par
+Example 2:arr=\{1,5,6,7,9,10\},x=11\par
+output:Element not found at locaion 2\par
+PROGRAM:\par
+\b0 #include <stdio.h>\par
+int binarySearch(int arr[], int left, int right, int x) \{\par
+    while (left <= right) \{\par
+        int mid = left + (right - left) / 2;\par
+if (arr[mid] == x)\par
+            return mid;\par
+         if (arr[mid] < x)\par
+            left = mid + 1;\par
+        else\par
+            right = mid - 1;\par
+    \}\par
+return -1;\par
+\}\par
+int main() \{\par
+    int arr[] = \{1, 5, 6, 7, 9, 10\};\par
+    int x = 6;\par
+    int n = sizeof(arr) / sizeof(arr[0]);\par
+    int result = binarySearch(arr, 0, n - 1, x);\par
+if (result != -1)\par
+        printf("Element found at location %d\\n", result);\par
+    else\par
+        printf("Element not found\\n");\par
+ return 0;\par
+\}\b\par
+7)Linear search\par
+PROGRAM:\par
+\b0 #include <stdio.h>\par
+int linearSearch(int arr[], int n, int x) \{\par
+    for (int i = 0; i < n; i++) \{\par
+        if (arr[i] == x) \{\par
+            return i;\par
+        \}\par
+    \}\par
+    return -1;\par
+\}\par
+int main() \{\par
+    int arr[] = \{2, 5, 7, 9, 11\};\par
+    int n = sizeof(arr) / sizeof(arr[0]);\par
+    int x = 7;\par
+    int result = linearSearch(arr, n, x);\par
+    if (result == -1) \{\par
+        printf("Element not found");\par
+    \} else \{\par
+        printf("Element found at index: %d", result);\par
+    \}\par
+    return 0;\par
+\}\par
+\b OUTPUT:\b0 Element found at index: 2\par
+\b 8)Binary search\par
+PROGRAM:\par
+\b0 #include <stdio.h>\par
+int binarySearch(int arr[], int l, int r, int x) \{\par
+    while (l <= r) \{\par
+        int mid = l + (r - l) / 2;\par
+ if (arr[mid] == x)\par
+            return mid;\par
+  if (arr[mid] < x)\par
+            l = mid + 1;\par
+        else\par
+            r = mid - 1;\par
+    \}\par
+return -1;\par
+\}\par
+int main() \{\par
+    int arr[] = \{2, 3, 4, 10, 40\};\par
+    int n = sizeof(arr) / sizeof(arr[0]);\par
+    int x = 10;\par
+    int result = binarySearch(arr, 0, n - 1, x);\par
+    if (result == -1)\par
+        printf("Element not present in the array");\par
+    else\par
+        printf("Element found at index %d", result);\par
+    return 0;\par
+\}\par
+\b OUTPUT:\b0 Element found at index 3\par
+}
+ 
